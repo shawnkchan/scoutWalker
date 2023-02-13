@@ -18,6 +18,10 @@ def index(request):
     })
 
 def discover(request):
-    routes = Route.objects
-    routes = routes.order_by("-timestamp").all()
-    return JsonResponse([route.serialize() for route in routes], safe=False)
+    # routes = Route.objects
+    # routes = routes.order_by("-timestamp").all()
+    # # return JsonResponse([route.serialize() for route in routes], safe=False)
+    # return JsonResponse({'test': 'rendering JSON package'})
+
+    routes = list(Route.objects.all().values())
+    return JsonResponse(routes, safe=False)

@@ -118,11 +118,14 @@ function viewAllRoutes() {
     document.querySelector('#browse-view').style.display = 'block';
     document.querySelector('#myRoutes-view').style.display = 'none';
 
-    fetch('http://127.0.0.1:8000/discover') 
+    fetch('/discover') 
     .then(response => response.json())
     .then(result => {
         result.forEach(function(route) {
             console.log(route);
+            const element = document.createElement('div');
+            element.append(route.distance);
+            document.querySelector('#browse-view').append(element);
         });
     })
 }
